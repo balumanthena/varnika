@@ -56,7 +56,7 @@ export default function SignatureCollection() {
             {/* Price */}
             {active === i && (
               <div className="absolute bottom-6 left-6 text-white text-sm bg-black/45 px-3 py-1 rounded-lg">
-                Start from {item.price}
+                Start from
               </div>
             )}
           </div>
