@@ -1,26 +1,430 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* ------------------------------------
+   SOFT ROYAL COLOR SYSTEM
+------------------------------------ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #faf6ef; /* ivory */
+  --paper: #f3ede1; /* linen */
+  --ink: #2b2a28; /* charcoal */
+  --gold: #c8a96a; /* champagne gold */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ------------------------------------
+   BASE TYPOGRAPHY & GLOBAL SMOOTHNESS
+------------------------------------ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--bg);
+    color: var(--ink);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ------------------------------------
+   REUSABLE COMPONENT UTILITIES
+------------------------------------ */
+@layer components {
+  /* Page Container */
+  .container-soft {
+    @apply max-w-6xl mx-auto px-6;
+  }
+
+  /* Elegant Underline for Titles */
+  .gold-underline {
+    background-image: linear-gradient(
+      transparent 75%,
+      rgba(200, 169, 106, 0.35) 0
+    );
+    background-size: 100% 100%;
+  }
+}
+
+/* ------------------------------------
+   LUXURY GOLD SHIMMER BORDER
+   (WORKS ON SAFARI + CHROME + EDGE)
+------------------------------------ */
+.gold-live-border {
+  position: relative;
+  border-radius: 1.5rem;
+}
+
+.gold-live-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 3px;
+  border-radius: inherit;
+  background: linear-gradient(
+    130deg,
+    #c8a34e,
+    #f6e7b4,
+    #b48a35,
+    #e4c980,
+    #c8a34e
+  );
+  background-size: 300% 300%;
+  animation: gold-shimmer 6s ease infinite;
+  pointer-events: none;
+
+  /* ✅ Safari + WebKit compatible border masking */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+}
+
+/* Inner wrapper that holds the image / content */
+.gold-live-inner {
+  position: relative;
+  border-radius: inherit;
+  overflow: hidden;
+  background: #faf7f2; /* fallback if image fails */
+}
+
+/* Gold shimmer animation */
+@keyframes gold-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ------------------------------------
+   ROYAL GOLD BUTTON (LIVE SHIMMER)
+------------------------------------ */
+.btn-gold-live {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2.4rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  color: #1a1a1a;
+  background: #faf7f2;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color 0.35s ease;
+}
+
+/* Animated gold border */
+.btn-gold-live::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    130deg,
+    #c8a34e,
+    #f6e7b4,
+    #b48a35,
+    #e4c980,
+    #c8a34e
+  );
+  background-size: 300% 300%;
+  animation: gold-shimmer 6s ease infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+}
+
+/* Shine streak on hover */
+.btn-gold-live::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  transition: left 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.btn-gold-live:hover::after {
+  left: 150%;
+}
+/* ROYAL GOLD AURA BEHIND IMAGE */
+.gold-halo {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(
+    circle at center,
+    rgba(200, 169, 106, 0.35) 0%,
+    rgba(200, 169, 106, 0.18) 25%,
+    rgba(200, 169, 106, 0.1) 45%,
+    rgba(200, 169, 106, 0.05) 60%,
+    transparent 100%
+  );
+  filter: blur(38px);
+  opacity: 0.85;
+  transition: opacity 1s ease;
+}
+
+/* Glow gently strengthens on hover (luxury touch) */
+.gold-live-border:hover .gold-halo {
+  opacity: 1;
+}
+/* ROYAL FAINT GOLD SPECK TEXTURE */
+.gold-specks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image: radial-gradient(
+      rgba(200, 169, 106, 0.35) 1px,
+      transparent 1px
+    ),
+    radial-gradient(rgba(200, 169, 106, 0.2) 1px, transparent 1px);
+  background-size: 6px 6px, 14px 14px; /* dual layer micro texture */
+  opacity: 0.14; /* subtle & premium */
+  filter: blur(0.3px);
+  mix-blend-mode: soft-light; /* KEY → blends naturally with halo */
+  transition: opacity 0.8s ease;
+}
+
+/* Slight shimmer change on hover (luxury movement) */
+.gold-live-border:hover .gold-specks {
+  opacity: 0.22;
+}
+/* Floating Circular Feature Labels */
+.feature-wheel {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 22px;
+  pointer-events: none;
+}
+
+.feature-wheel span {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(200, 169, 106, 0.35);
+  padding: 8px 14px;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  color: #6a6256;
+  white-space: nowrap;
+  pointer-events: auto;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.feature-wheel span:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(200, 169, 106, 0.22);
+}
+/* Floating Circular Feature Wheel (R1 Rotation) */
+.feature-wheel {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  width: 260px;
+  height: 260px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  animation: wheel-rotate 18s linear infinite;
+}
+
+@keyframes wheel-rotate {
+  0% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+/* Individual labels (Auto positioned on wheel) */
+.feature-wheel span {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(200, 169, 106, 0.35);
+  padding: 8px 14px;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  color: #6a6256;
+  pointer-events: auto;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.feature-wheel span:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow: 0 6px 20px rgba(200, 169, 106, 0.22);
+}
+/* Warm Bridal Spotlight Sweep */
+.gold-spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at 30% 50%,
+    rgba(255, 220, 180, 0.45) 0%,
+    rgba(255, 220, 180, 0.18) 38%,
+    rgba(255, 220, 180, 0.08) 60%,
+    transparent 100%
+  );
+  mix-blend-mode: soft-light;
+  opacity: 0.8;
+  animation: spotlight-sweep 14s ease-in-out infinite alternate;
+}
+
+@keyframes spotlight-sweep {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 60% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in {
+  animation: fade-in 0.25s ease-out;
+}
+.text-warmgray {
+  color: #6a6256;
+}
+.text-charcoal {
+  color: #2b2a28;
+}
+.text-champagne {
+  color: #c8a96a;
+}
+.border-champagne {
+  border-color: #c8a96a;
+}
+.bg-champagne {
+  background-color: #c8a96a;
+}
+.text-charcoal {
+  color: #2b2a28;
+}
+.text-warmgray {
+  color: #6a6256;
+}
+.text-champagne {
+  color: #c8a34e;
+}
+.border-champagne {
+  border-color: #c8a34e;
+}
+/* Subtle Champagne Glow for Logo (G1) */
+.logo-gold-glow {
+  background: linear-gradient(90deg, #c8a34e, #e6d4a7, #c8a34e);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gold-soft-glow 6s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 4px rgba(200, 169, 106, 0.18));
+}
+
+@keyframes gold-soft-glow {
+  0% {
+    background-position: 0% center;
+    filter: drop-shadow(0 0 2px rgba(200, 169, 106, 0.12));
+  }
+  100% {
+    background-position: 100% center;
+    filter: drop-shadow(0 0 6px rgba(200, 169, 106, 0.32));
+  }
+}
+.logo-gold-glow {
+  background: linear-gradient(90deg, #c8a34e, #e6d4a7, #c8a34e);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gold-soft-glow 6s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 4px rgba(200, 169, 106, 0.18));
+}
+
+@keyframes gold-soft-glow {
+  0% {
+    background-position: 0% center;
+    filter: drop-shadow(0 0 2px rgba(200, 169, 106, 0.12));
+  }
+  100% {
+    background-position: 100% center;
+    filter: drop-shadow(0 0 6px rgba(200, 169, 106, 0.32));
+  }
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.group {
+  transform-style: preserve-3d;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+/* Soft gold volumetric halo for the active card */
+.gold-halo-card {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+      circle at 50% 65%,
+      rgba(200, 169, 106, 0.28),
+      transparent 60%
+    ),
+    radial-gradient(
+      80% 70% at 50% 40%,
+      rgba(255, 247, 227, 0.55),
+      transparent 70%
+    );
+  filter: blur(28px);
+  pointer-events: none;
+}
+
+/* While dragging the carousel, disable text selection cursor */
+.is-dragging {
+  cursor: grabbing !important;
 }
