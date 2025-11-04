@@ -4,11 +4,11 @@ import Image from "next/image";
 import { useState } from "react";
 
 const items = [
-  { src: "/collection-1.jpg", title: "Street Neon", price: "129.00 USD" },
-  { src: "/collection-2.jpg", title: "Urban Pink", price: "149.00 USD" },
-  { src: "/collection-3.jpg", title: "Mint Oversize", tag: "New", price: "120.25 USD" },
-  { src: "/collection-4.jpg", title: "Techwear Layered", price: "168.00 USD" },
-  { src: "/collection-5.jpg", title: "Graphic Black", price: "134.50 USD" },
+  { src: "/collection-1.jpg", title: "Street Neon" },
+  { src: "/collection-2.jpg", title: "Urban Pink" },
+  { src: "/collection-3.jpg", title: "Mint Oversize", tag: "New" },
+  { src: "/collection-4.jpg", title: "Techwear Layered" },
+  { src: "/collection-5.jpg", title: "Graphic Black" },
 ];
 
 export default function SignatureCollection() {
