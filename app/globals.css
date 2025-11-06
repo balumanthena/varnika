@@ -428,3 +428,224 @@
 .is-dragging {
   cursor: grabbing !important;
 }
+@keyframes goldFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-goldFlow {
+  animation: goldFlow 3.5s ease-in-out infinite;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+
+.btn-gold-live {
+  position: relative;
+  border-radius: 9999px;
+  background: #faf7f2;
+  color: #1a1a1a;
+  border: 1px solid #c8a96a;
+  transition: 0.5s;
+}
+.btn-gold-live:hover {
+  background: linear-gradient(90deg, #c8a96a, #e7d7a6);
+  color: #1a1a1a;
+  transform: translateY(-2px);
+}
+/* Royal Sandalwood Gold Boutique Color Grade */
+.royal-grade {
+  filter: brightness(1.08) contrast(1.06) saturate(1.12) sepia(0.12)
+    hue-rotate(-4deg) drop-shadow(0 18px 45px rgba(0, 0, 0, 0.35));
+  transition: filter 1.8s ease, transform 1.8s ease;
+}
+
+.royal-grade:hover {
+  filter: brightness(1.17) contrast(1.08) saturate(1.18) sepia(0.18)
+    hue-rotate(-6deg);
+  transform: scale(1.04);
+}
+@keyframes goldFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.border-champagne {
+  border-color: #d5c08f;
+}
+/* Royal Font System */
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Royal Section Headings */
+.section-title {
+  @apply font-display text-4xl md:text-5xl text-[#1a1a1a] text-center leading-tight;
+}
+
+.section-sub {
+  @apply text-[#6a6256] text-center mt-3 max-w-2xl mx-auto text-base;
+}
+/* GOLD SHIMMER BORDER EFFECT FIX */
+.gold-border-shimmer {
+  position: relative;
+  border-radius: 1.5rem;
+}
+
+.gold-border-shimmer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px; /* border thickness */
+  border-radius: inherit;
+  background: linear-gradient(
+    130deg,
+    #c8a34e,
+    #f6e7b4,
+    #b48a35,
+    #e4c980,
+    #c8a34e
+  );
+  background-size: 300% 300%;
+  animation: gold-shimmer 6s ease infinite;
+
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.gold-border-shimmer:hover::before {
+  opacity: 1;
+}
+
+@keyframes gold-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes gold-glow-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/* Scroll Fade Animation */
+@keyframes gold-glow-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Hide Scrollbar */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+.gold-live-mask {
+  background: linear-gradient(
+    130deg,
+    #c8a34e,
+    #f6e7b4,
+    #b48a35,
+    #e4c980,
+    #c8a34e
+  );
+  background-size: 300% 300%;
+  animation: gold-shimmer 6s ease infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+@keyframes gold-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/* ——— Premium gold micro-frame ——— */
+.gold-frame {
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  padding: 2px;
+  background: linear-gradient(120deg, #c8a34e, #f5e7b4, #b78b3f);
+  background-size: 300% 300%;
+  animation: goldFlow 8s ease infinite;
+  pointer-events: none;
+
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+@keyframes goldFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

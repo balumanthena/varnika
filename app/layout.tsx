@@ -1,27 +1,29 @@
 import "./globals.css";
 import { Cormorant_Garamond, Inter } from "next/font/google";
+import type { Metadata } from "next"; // ✅ ADD THIS
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-display"
+  variable: "--font-display",
 });
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-body"
+  weight: ["300", "400", "500"],
+  variable: "--font-body",
 });
 
-export const metadata = {
+// ✅ FIX: Apply Metadata type
+export const metadata: Metadata = {
   title: "Varnika Boutique — Soft Luxury Couture",
-  description: "A premium boutique blending heritage craftsmanship with modern elegance."
+  description: "Crafted with heritage refinement and premium couture finishing.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
-      <body className="font-sans">
+      <body className="font-body bg-[#faf6ef] text-[#1a1a1a] antialiased">
         {children}
       </body>
     </html>
