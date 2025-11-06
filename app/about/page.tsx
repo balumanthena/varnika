@@ -12,7 +12,7 @@ export default function About() {
       {/* Hero Section */}
       <section className="relative h-[65vh] md:h-[78vh] w-full overflow-hidden">
         <Image
-          src="/about-hero.jpg" // <-- add this image to /public
+          src="/about-hero.jpg"
           fill
           alt="Varnika Boutique"
           className="object-cover brightness-[0.82]"
@@ -43,14 +43,14 @@ export default function About() {
             </p>
             <p className="mt-4 text-warmgray leading-relaxed text-lg">
               Our atelier works closely with skilled weavers, artisans, and designers across
-              regions, bringing to life exclusive bridal sarees, couture lehengas, and personalized
-              tailoring experiences.
+              regions, bringing to life exclusive bridal sarees, couture lehengas, and
+              personalized tailoring experiences.
             </p>
           </div>
 
           <div className="relative rounded-3xl overflow-hidden gold-live-border">
             <Image
-              src="/about-portrait.jpg" // <-- add this to /public
+              src="/about-portrait.jpg"
               alt="Couture Experience"
               fill
               className="object-cover"
@@ -90,6 +90,41 @@ export default function About() {
               <p className="text-warmgray mt-3">{item.v}</p>
             </div>
           ))}
+        </section>
+
+        {/* Branches — Royal Glow */}
+        <section className="mt-28 text-center">
+          <h3 className="font-[var(--font-display)] text-3xl text-charcoal tracking-[0.02em]">
+            Boutique Locations
+          </h3>
+
+          <div className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8">
+            {["Bangalore", "Chennai", "Pune", "Delhi", "Ahmedabad"].map((city) => (
+              <div key={city} className="relative group">
+                {/* Glow Aura */}
+                <span
+                  className="absolute inset-0 rounded-full blur-[22px] opacity-0 group-hover:opacity-70 transition-all duration-700
+                  bg-[linear-gradient(120deg,#c8a34e33,#f4e3b533,#a8843e33)] pointer-events-none"
+                />
+
+                {/* Label */}
+                <span
+                  className="relative z-10 px-8 py-3 text-[11px] md:text-sm tracking-[0.32em]
+                  uppercase font-medium rounded-full border border-[#d7b97a]
+                  text-[#6d5833] bg-white/80 backdrop-blur-[4px]
+                  shadow-[0_3px_18px_-6px_rgba(200,163,78,0.42)]
+                  transition-all duration-600 group-hover:shadow-[0_4px_28px_-4px_rgba(200,163,78,0.65)]
+                  group-hover:bg-[#faf3df] group-hover:border-[#c8a34e]"
+                >
+                  {city}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 text-[10px] md:text-xs uppercase tracking-[0.45em] text-[#b8924c]">
+            V A R N I K A • B O U T I Q U E • E X P A N S I O N
+          </div>
         </section>
       </main>
 

@@ -649,3 +649,36 @@
     background-position: 0% 50%;
   }
 }
+@keyframes shineSweep {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+.icon-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.icon-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.75) 45%,
+    transparent 80%
+  );
+  transform: translateX(-120%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.icon-shine:hover::after {
+  opacity: 1;
+  animation: shineSweep 1.4s ease-out;
+}
